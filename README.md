@@ -18,3 +18,29 @@
 ၁။ **Repository ကို Fork လုပ်ပါ သို့မဟုတ် Clone လုပ်ပါ:**
    ```bash
    git clone [https://github.com/yourusername/maritime-news-bot.git](https://github.com/yourusername/maritime-news-bot.git)
+။ လိုအပ်သော Library များသွင်းရန်:
+pip install -r requirements.txt
+၃။ GitHub Secrets သတ်မှတ်ရန်:
+GitHub Repository Settings > Secrets and variables > Actions တွင် အောက်ပါတို့ကို ထည့်သွင်းပါ-
+
+TELEGRAM_TOKEN: သင်၏ Bot Token
+
+CHANNEL_ID: သင်၏ Telegram Channel Username (ဥပမာ- @my_channel)
+
+၄။ Workflow Permission ပေးရန်:
+Settings > Actions > General > Workflow permissions တွင် "Read and write permissions" ကို ရွေးပေးပါ။
+
+📂 Project Structure
+news_bot.py: ပင်မ Python code။
+
+.github/workflows/main.yml: အလိုအလျောက် Run စေမည့် GitHub Action configuration။
+
+sent_news_database.txt: ပို့ပြီးသားသတင်းများကို မှတ်သားထားသည့် Database။
+
+requirements.txt: လိုအပ်သော Python libraries များစာရင်း။
+
+💡 Contribution
+ဤ Project အား ပိုမိုကောင်းမွန်အောင် ပြင်ဆင်လိုပါက Pull Request ပေးပို့နိုင်ပါသည်။
+
+🏗️ Developed By
+Developed & Maintained by semap.info Providing technical solutions for Myanmar Seafarers.
