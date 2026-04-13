@@ -1,0 +1,37 @@
+name: Maritime News Bot Run
+
+on:
+  schedule:
+    - cron: '0 */3 * * *' # ၃ နာရီခြားတစ်ခါ ပုံမှန် Run မယ်
+  workflow_dispatch:      # ကိုယ်တိုင် manually run လို့ရအောင်လုပ်ထားတာ
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run News Bot
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+        run: python news_bot.py
+
+      - name: Commit and push if database updated
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add sent_news_database.txt
+          git commit -m "Update sent news database" || exit 0
+          git push
