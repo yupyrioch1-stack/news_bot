@@ -2,7 +2,7 @@ name: Maritime News Bot Run
 
 on:
   schedule:
-    - cron: '0 */3 * * *' # ၃ နာရီခြားတစ်ခါ ပုံမှန် Run မယ်
+    - cron: '0 * * * *' # ၃ နာရီခြားတစ်ခါ ပုံမှန် Run မယ်
   workflow_dispatch:      # ကိုယ်တိုင် manually run လို့ရအောင်လုပ်ထားတာ
 
 jobs:
